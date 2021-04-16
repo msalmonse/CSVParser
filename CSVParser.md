@@ -18,6 +18,7 @@
 | | `,` | fieldStart | Add a new field to the last row |
 | | `nl` | lineStart | Add a new field to the last row |
 | | `cr`<sup>[4](#fn4)</sup> | normal | skip |
+| | `space` | normal | Add to field text but trailing space may be removed later |
 | | else | normal | Add character to field text |
 | quoted | `"` | qdfound | |
 | | else | quoted | Add character to field text |
