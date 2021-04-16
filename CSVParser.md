@@ -5,12 +5,12 @@
 | Current State | Condition | Next State | Notes |
 | --- | --- | --- | --- |
 | | Initial state | lineStart | |
-| lineStart | `ws`<sup>[1](#fn1)</sup> | lineStart | Skip if not leavingWhiteSpace |
+| lineStart | `ws`<sup>[1](#fn1),[5](#fn5)</sup> | lineStart | Skip |
 |  | `"` | quoted | Add a new row |
 |  | `,`<sup>[2](#fn2)</sup> | fieldStart | Add a new row and add an empty field |
 |  | else | normal | Add a new row and add character to text field |
 | fieldStart | `nl`<sup>[3](#fn3)</sup>| lineStart | Add an empty field to the last row |
-| | `ws` | fieldStart | Skip if not leavingWhiteSpace, **N.B.** `nl` already tested |
+| | `ws`<sup>[5](#fn5)</sup> | fieldStart | `nl` already tested |
 | | `"` | quoted | Start quoted field |
 | | `,` | fieldStart | Add an empty field to the last row |
 | | else | normal | |
@@ -32,3 +32,4 @@ it means carriage return, new line or, space.
 - <a id="fn2">2</a> The parser can handle other field separators than a comma but it is the default.
 - <a id="fn3">3</a> `nl` is an abreviation for new line, it is used to terminate a line of text together with `cr`.
 - <a id="fn4">4</a> `cr` is an abreviation for carriage return.
+- <a id="fn5">5</a> This line is skipped if `leavingWhiteSpace` is true
