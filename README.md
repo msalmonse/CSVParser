@@ -2,6 +2,7 @@
 
 This package parses CSV files following [RFC-4180](https://tools.ietf.org/html/rfc4180).
 It is much more tolerant than described there but that shouldn't be a problem.
+The state machine is described [here](CSVParser.md)
 
 ### API
 
