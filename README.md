@@ -1,3 +1,3 @@
 # CSVParser
 
-A description of this package.
+This package parses CSV files.
