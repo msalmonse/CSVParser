@@ -5,12 +5,12 @@
 | Current State | Condition | Next State | Notes |
 | --- | --- | --- | --- |
 | | Initial state | lineStart | |
-| lineStart | `ws`<sup>[1](#fn1)</sup> | lineStart | |
+| lineStart | `ws`<sup>[1](#fn1)</sup> | lineStart | Skip if not leavingWhiteSpace |
 |  | `"` | quoted | Add a new row |
 |  | `,`<sup>[2](#fn2)</sup> | fieldStart | Add a new row and add an empty field |
 |  | else | normal | Add a new row and add character to text field |
 | fieldStart | `nl`<sup>[3](#fn3)</sup>| lineStart | Add an empty field to the last row |
-| | `ws` | fieldStart | `ws` excluding `nl` |
+| | `ws` | fieldStart | Skip if not leavingWhiteSpace, **N.B.** `nl` already tested |
 | | `"` | quoted | Start quoted field |
 | | `,` | fieldStart | Add an empty field to the last row |
 | | else | normal | |
