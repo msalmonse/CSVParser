@@ -85,7 +85,22 @@ final class CSVParserTests: XCTestCase {
         XCTAssertEqual(parsed[2].count, 3)
     }
 
-    func testCsvParsePerformance() {
+    func testURLParser() {
+        var parsed: [[String]] = []
+        XCTAssertNotNil(testURL)
+        try XCTAssertNoThrow(csvParse(testURL!, to: &parsed))
+        XCTAssertEqual(parsed.count, 100)
+    }
+
+    func testLeavingCsvParsePerformance() {
+        var parsed: [[String]] = []
+        let testData = csvGen(100000, by: 7, precision: 8)
+        measure {
+            csvParse(testData, to: &parsed, leavingWhiteSpace: true)
+        }
+    }
+
+    func testTrimmingCsvParsePerformance() {
         var parsed: [[String]] = []
         let testData = csvGen(100000, by: 7, precision: 8)
         measure {
@@ -112,6 +127,10 @@ final class CSVParserTests: XCTestCase {
     static var allTests = [
         ("test csvParse with ws trimming", testTrimmingCSVParse),
         ("test csvParse without ws trimming", testNoTrimmingCSVParse),
-        ("test csvParse performance", testCsvParsePerformance)
+        ("test parsing of CSV from URL", testURLParser),
+        ("test leaving csvParse performance", testLeavingCsvParsePerformance),
+        ("test Trimming csvParse performance", testTrimmingCsvParsePerformance)
     ]
+
+    let testURL = URL(string: "https://docs.google.com/uc?export=download&id=1W3Yb8Fr8WA8yU6zjjsvPJ8D1h_LYDzIL")
 }
