@@ -1,0 +1,22 @@
+disabled_rules:
+  - comma
+  - identifier_name
+  - private_over_fileprivate
+  - redundant_optional_initialization
+  - trailing_comma
+  - type_name
+
+colon:
+  flexible_right_spacing: true
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+
+file_length:
+  warning: 500
+
+function_body_length:
+  warning: 60
+
+type_body_length:
+  warning: 250
