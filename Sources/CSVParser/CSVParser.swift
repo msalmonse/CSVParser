@@ -18,7 +18,7 @@ private enum ParserState: Comparable {
 ///   - inData: the string to parse
 ///   - separatedBy: field separator
 ///   - to: Array of arrays to hold results
-//    - leavingWhiteSpace: Should white space be trimmed or left?
+///   - leavingWhiteSpace: Should white space be trimmed or left?
 
 public func csvParse(
     _ inData: String,

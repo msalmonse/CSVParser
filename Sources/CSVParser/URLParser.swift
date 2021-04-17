@@ -7,7 +7,7 @@ import Foundation
 ///   - url: CSV source
 ///   - separatedBy: field separator
 ///   - to: Array of arrays to hold results
-//    - leavingWhiteSpace: Should white space be trimmed or left?
+///   - leavingWhiteSpace: Should white space be trimmed or left?
 
 public func csvParse(
     _ url: URL,
