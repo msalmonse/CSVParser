@@ -19,7 +19,7 @@ final class CSVParserTests: XCTestCase {
     func csvSplit(_ inData: String, to outData: inout [[String]]) {
         outData = []
 
-        for row in inData.split(separator: "\n") {
+        for row in inData.components(separatedBy: "\n") {
             outData.append(row.components(separatedBy: ","))
         }
     }
