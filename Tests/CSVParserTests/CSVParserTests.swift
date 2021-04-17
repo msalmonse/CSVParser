@@ -16,6 +16,14 @@ final class CSVParserTests: XCTestCase {
         return data.joined(separator: "\r\n")
     }
 
+    func csvSplit(_ inData: String, to outData: inout [[String]]) {
+        outData = []
+
+        for row in inData.split(separator: "\n") {
+            outData.append(row.components(separatedBy: ","))
+        }
+    }
+
     func testTrimmingCSVParse() {
         var parsed: [[String]] = []
         csvParse(Self.testRow, to: &parsed)
@@ -92,6 +100,14 @@ final class CSVParserTests: XCTestCase {
         XCTAssertEqual(parsed.count, 100)
     }
 
+    func testSplitPerformance() {
+        var parsed: [[String]] = []
+        let testData = csvGen(100000, by: 7, precision: 8)
+        measure {
+            csvSplit(testData, to: &parsed)
+        }
+    }
+
     func testLeavingCsvParsePerformance() {
         var parsed: [[String]] = []
         let testData = csvGen(100000, by: 7, precision: 8)
@@ -128,6 +144,7 @@ final class CSVParserTests: XCTestCase {
         ("test csvParse with ws trimming", testTrimmingCSVParse),
         ("test csvParse without ws trimming", testNoTrimmingCSVParse),
         ("test parsing of CSV from URL", testURLParser),
+        ("test split performance", testSplitPerformance),
         ("test leaving csvParse performance", testLeavingCsvParsePerformance),
         ("test Trimming csvParse performance", testTrimmingCsvParsePerformance)
     ]

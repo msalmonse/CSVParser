@@ -19,7 +19,7 @@ untrimmed.
 ### Speed
 
 100,000 lines of 7 fields of random numbers takes about .4 seconds to process on my M1 mini, leaving the spaces adds
-about .2 seconds. A simple split of the text on newlines and then commas is about twice as fast, YMMV.
+about .2 seconds. A simple split of the text on newlines and then commas is roughly mid way between them, YMMV.
 
 ### Limitations
 
